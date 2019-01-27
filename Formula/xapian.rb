@@ -3,13 +3,13 @@ class Xapian < Formula
   homepage "https://xapian.org/"
   version "1.5-kronuz"
   url "https://github.com/Kronuz/xapian/archive/master.tar.gz"
-  sha256 "b4071db8f1d87ffc90e30758d1c6afe57bb3efc3be825194704c78433cec5e9e"
+  sha256 "c5f5bbf311444d623815e38f1da98dcec253cab199beaa73d04c02f5cb2f4a54"
   head "https://github.com/Kronuz/xapian.git"
 
   bottle do
     root_url "https://kronuz.io/homebrew-tap"
     cellar :any
-    sha256 "b6e0978d3cb0ebaa91defb32471bdb5ede93acc1c62edfccba1e8846453db1be" => :mojave
+    sha256 "ecaca1af78af9e0cf3eae44f3a7a5aa2111d8244228886e75c0227c90f51b053" => :mojave
   end
 
   skip_clean :la
