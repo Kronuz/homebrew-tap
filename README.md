@@ -32,9 +32,6 @@ Just `brew install Kronuz/tap/gtest`.
 ```sh
 brew update
 
-brew install --build-bottle Kronuz/tap/xapian
-brew bottle Kronuz/tap/xapian
-
 brew install --build-bottle Kronuz/tap/xapiand
 brew bottle Kronuz/tap/xapiand
 
