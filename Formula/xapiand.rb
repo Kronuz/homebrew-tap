@@ -8,7 +8,7 @@ class Xapiand < Formula
   bottle do
     root_url "https://kronuz.io/homebrew-tap"
     cellar :any
-    sha256 "5033d44308bdc5c49e593dd466144334dc598a78001581ab414e1b1a14d8d027" => :high_sierra
+    sha256 "d01bcb1390d23244b51ab556ea5c152e2a783b57301e2d6acb19b413439b63e0" => :high_sierra
     sha256 "7042b61f862be21fc7033aecac3fd11459e2138f87ad3da8b7189c9d6a6b1141" => :mojave
   end
 
