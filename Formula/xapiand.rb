@@ -1,15 +1,15 @@
 class Xapiand < Formula
   desc "Xapiand: A RESTful Search Engine"
   homepage "https://kronuz.io/Xapiand"
-  url "https://github.com/Kronuz/Xapiand/archive/v0.21.1.tar.gz"
-  sha256 "fd6a63876abed5acaeba5e1fbe0c6245436155ec5b0f94d71dfafbf88497a0a5"
+  url "https://github.com/Kronuz/Xapiand/archive/v0.21.2.tar.gz"
+  sha256 "68fc06b8bdb2739ade7691c13d0aa903d17b4c01808a561f008d8b91e08284b9"
   head "https://github.com/Kronuz/Xapiand.git"
 
   bottle do
     root_url "https://kronuz.io/homebrew-tap"
     cellar :any
+    sha256 "38a0939452777aa374884edfb6b3aaca78533aa92b7d742243a4788eb1354b14" => :high_sierra
     sha256 "7d1d255ac452cecbca936c9dc318af8f85b62c7b2cbde6f168a066edbbb25a0c" => :mojave
-    sha256 "8d001d877299c26c1a07e2869a0ed0ada6c9c3be5da2ae7e9e5f66c19113510e" => :high_sierra
   end
 
   depends_on "icu4c"
