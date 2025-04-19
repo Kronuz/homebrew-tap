@@ -6,10 +6,9 @@ class Xapiand < Formula
   head "https://github.com/Kronuz/Xapiand.git"
 
   bottle do
-    root_url "https://kronuz.io/homebrew-tap"
-    cellar :any
-    sha256 "f64ea6da5fbbc36f24a517df74e4e9aa1cebdf426044f8f3efe25d04f6b50d2b" => :mojave
-    sha256 "ad0d50b6d2ebe17a5319a8d42c2a19be0eaa414b245422ce22e920d3f2f41c55" => :high_sierra
+    root_url "https://kronuz.github.io/homebrew-tap"
+    sha256 cellar: :any, mojave: "f64ea6da5fbbc36f24a517df74e4e9aa1cebdf426044f8f3efe25d04f6b50d2b"
+    sha256 cellar: :any, high_sierra: "ad0d50b6d2ebe17a5319a8d42c2a19be0eaa414b245422ce22e920d3f2f41c55"
   end
 
   depends_on "icu4c"
