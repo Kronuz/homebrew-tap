@@ -9,7 +9,7 @@ This formula makes it easy to install `xapiand` on any modern OS X system.
 
 Just `brew install Kronuz/tap/xapiand`.
 
-The [project's page](http://kronuz.io/Xapiand) goes into detail about it.
+The [project's page](http://Kronuz.github.io/Xapiand) goes into detail about it.
 
 
 ### Nginx
