@@ -44,6 +44,6 @@ brew bottle Kronuz/tap/gtest
 
 # Copyright
 
-Copyright © 2018,2019 Germán Méndez Bravo (Kronuz)
+Copyright © 2018-2025 Germán Méndez Bravo (Kronuz)
 
 Code released under the [MIT License](LICENSE).
