@@ -1,9 +1,10 @@
 class Et < Formula
   desc "Eternal Terminal fork with etctl, a native machine control plane"
   homepage "https://github.com/Kronuz/EternalTerminal"
-  url "https://github.com/Kronuz/EternalTerminal/archive/refs/tags/et-v6.2.11-etctl.1.tar.gz"
+  url "https://github.com/Kronuz/EternalTerminal.git",
+      tag:      "et-v6.2.11-etctl.1",
+      revision: "a73e8084a31f7046075d2f73376aae09f34fe7f1"
   version "6.2.11-etctl.1"
-  sha256 "f2dbbda0336b1eef8e31828a2a5c610041be7295a9bb4e3041629c67c0823fa9"
   head "https://github.com/Kronuz/EternalTerminal.git", branch: "etctl-2-richer-verbs"
   license "Apache-2.0"
 
