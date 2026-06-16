@@ -8,6 +8,12 @@ class Et < Formula
   head "https://github.com/Kronuz/EternalTerminal.git", branch: "etctl-2-richer-verbs"
   license "Apache-2.0"
 
+  bottle do
+    root_url "https://kronuz.github.io/homebrew-tap"
+    rebuild 1
+    sha256 cellar: :any, arm64_tahoe: "0046420530a57041b345698e7e2756eaaed94b5064d8047532747abfb67e2cc7"
+  end
+
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "autoconf" => :build
