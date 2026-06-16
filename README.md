@@ -3,6 +3,14 @@
 ## Formulas
 
 
+### Eternal Terminal
+
+`et` plus `etctl`, a native control plane for driving backgrounded `et --ctl`
+sessions from scripts and agents (a fork of Eternal Terminal, telemetry off).
+
+Just `brew install Kronuz/tap/et`.
+
+
 ### Xapiand
 
 This formula makes it easy to install `xapiand` on any modern OS X system.
