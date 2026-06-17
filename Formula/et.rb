@@ -2,15 +2,15 @@ class Et < Formula
   desc "Eternal Terminal fork with etctl, a native machine control plane"
   homepage "https://github.com/Kronuz/EternalTerminal"
   url "https://github.com/Kronuz/EternalTerminal.git",
-      tag:      "et-master-etctl.3",
-      revision: "b4a383e1762dea1cc2c615b1eba3999ad5fe3fc3"
-  version "6.2.11+master.3"
+      tag:      "et-master-etctl.4",
+      revision: "6b06e12514f1ca2cd58893d1cc55fb763af04ced"
+  version "6.2.11+master.4"
   head "https://github.com/Kronuz/EternalTerminal.git", branch: "etctl-2-richer-verbs"
   license "Apache-2.0"
 
   bottle do
     root_url "https://kronuz.github.io/homebrew-tap"
-    sha256 cellar: :any, arm64_tahoe: "4508084f2775f4f50c27096a2bdac3d7044eb3ab001dd39c7d7749efa40fa272"
+    sha256 cellar: :any, arm64_tahoe: "ca78bf2173eaa22b1ca10d887931186f56dedc8df479c3cf24ecfdcc0eb9c45f"
   end
 
   depends_on "cmake" => :build
