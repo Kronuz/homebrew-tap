@@ -24,10 +24,13 @@ class Xapiand < Formula
            "-DCMAKE_BUILD_TYPE=Release",
            "-DCMAKE_CXX_STANDARD=20",
            "-DCMAKE_CXX_STANDARD_REQUIRED=ON",
+           "-DLTO=OFF",
            "-DASIO_INCLUDE_DIR=#{Formula["asio"].opt_include}",
            "-DHOMEBREW_ALLOW_FETCHCONTENT=ON",
            *std_cmake_args
-    system "cmake", "--build", "build"
+    # LTO is off for the bottle build: its per-TU bitcode makes the heavy TUs
+    # memory-hungry enough to OOM the smaller macOS runners and crawls on Intel.
+    system "cmake", "--build", "build", "--parallel", ENV.make_jobs.to_s
     system "cmake", "--install", "build"
   end
 
