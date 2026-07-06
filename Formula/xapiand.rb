@@ -6,6 +6,12 @@ class Xapiand < Formula
   license "MIT"
   head "https://github.com/Kronuz/Xapiand.git", branch: "master"
 
+  bottle do
+    root_url "https://github.com/Kronuz/Xapiand/releases/download/v1.0.0-alpha.1"
+    sha256 arm64_sequoia: "11bcaf77b291ddfa6a22732711e2dc1d98ed187c2ba08af39ee471526fe33917"
+    sha256 arm64_sonoma:  "2cedd16470f456a3a8f4fb443b27ecfa43435c795b5372c7eb6237ce2fda095b"
+  end
+
   depends_on "cmake" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
