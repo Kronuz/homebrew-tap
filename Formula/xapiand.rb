@@ -1,36 +1,43 @@
 class Xapiand < Formula
-  desc "Xapiand: A RESTful Search Engine"
-  homepage "https://kronuz.io/Xapiand"
-  url "https://github.com/Kronuz/Xapiand/archive/v0.40.0.tar.gz"
-  sha256 "9a935c533c78728c7dffd4c46e584b37d74a617c2fd58cf4f7a4cea88a6ec4d2"
-  head "https://github.com/Kronuz/Xapiand.git"
+  desc "RESTful search engine"
+  homepage "https://github.com/Kronuz/Xapiand"
+  url "https://github.com/Kronuz/Xapiand/archive/refs/tags/v1.0.0-alpha.1.tar.gz"
+  sha256 "bf85efc4dbfe3a8520a23b6e929ec59150289b54a1708ed5f90ac50f81c6805a"
+  license "MIT"
+  head "https://github.com/Kronuz/Xapiand.git", branch: "master"
 
-  bottle do
-    root_url "https://kronuz.github.io/homebrew-tap"
-    sha256 mojave: "f64ea6da5fbbc36f24a517df74e4e9aa1cebdf426044f8f3efe25d04f6b50d2b"
-    sha256 high_sierra: "ad0d50b6d2ebe17a5319a8d42c2a19be0eaa414b245422ce22e920d3f2f41c55"
-    sha256 sequoia: "efbc48f1071571a9532ea797c5a29f5a618860a6c0081504aa3400e3a2745c14"
-  end
-
-  depends_on "icu4c"
   depends_on "cmake" => :build
+  depends_on "ninja" => :build
   depends_on "pkg-config" => :build
+  depends_on "tcl-tk" => :build
+  depends_on "asio"
+  depends_on "icu4c"
+  depends_on "zstd"
 
   def install
-    mkdir "build" do
-      system "cmake", "..", "-DCCACHE_FOUND=CCACHE_FOUND-NOTFOUND", "-DROOT=#{HOMEBREW_PREFIX}", "-DPACKAGE_HASH=#{ENV['HOMEBREW_PACKAGE_HASH']}", *std_cmake_args
-      system "make"
-      system "make", "install"
-    end
+    # icu4c is keg-only; point pkg-config (and CMake's ICU probe) at it.
+    ENV.prepend_path "PKG_CONFIG_PATH", Formula["icu4c"].opt_lib/"pkgconfig"
+    # Xapiand fetches its Kronuz-family deps via FetchContent, which Homebrew traps
+    # by default; HOMEBREW_ALLOW_FETCHCONTENT is the sanctioned opt-out. Force C++20 so
+    # older Apple Clang toolchains apply it to the sub-builds too.
+    system "cmake", "-S", ".", "-B", "build", "-GNinja",
+           "-DCMAKE_BUILD_TYPE=Release",
+           "-DCMAKE_CXX_STANDARD=20",
+           "-DCMAKE_CXX_STANDARD_REQUIRED=ON",
+           "-DASIO_INCLUDE_DIR=#{Formula["asio"].opt_include}",
+           "-DHOMEBREW_ALLOW_FETCHCONTENT=ON",
+           *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
 
   def post_install
-    (var/"run").mkpath
     (var/"db/xapiand").mkpath
     (var/"log").mkpath
+    (var/"run").mkpath
   end
 
   test do
-    system bin/"xapiand", "--version"
+    assert_match "Xapiand", shell_output("#{bin}/xapiand --version")
   end
 end
