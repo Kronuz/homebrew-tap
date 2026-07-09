@@ -1,16 +1,30 @@
+# Homebrew formula for Xapiand (build-from-source).
+#
+# This is the canonical source for the formula. To publish it, copy it into the
+# tap repository the docs point at (github.com/Kronuz/homebrew-tap) as
+# Formula/xapiand.rb, so `brew install Kronuz/tap/xapiand` resolves.
+#
+# The url/sha256 below are the committed default, used for a local
+# `brew install ./contrib/homebrew/xapiand.rb`. At release time the bottling
+# workflow (.github/actions/build-bottle) rewrites both to the tag being built and
+# computes the source sha256 fresh, so a release's bottles always come from that
+# release's source. No manual bump needed.
+#
+# Pre-built bottles are a later step (brew test-bot / a bottling workflow); this
+# formula builds from source.
 class Xapiand < Formula
   desc "RESTful search engine"
   homepage "https://github.com/Kronuz/Xapiand"
-  url "https://github.com/Kronuz/Xapiand/archive/refs/tags/v1.0.0-alpha.1.tar.gz"
-  sha256 "bf85efc4dbfe3a8520a23b6e929ec59150289b54a1708ed5f90ac50f81c6805a"
+  url "https://github.com/Kronuz/Xapiand/archive/refs/tags/v1.0.0-alpha.2.tar.gz"
+  sha256 "5adaae3cc9cf6a5fe1d0f44c7f5328e655b77b0b84e777034874a4e6b01f7259"
   license "MIT"
   head "https://github.com/Kronuz/Xapiand.git", branch: "master"
 
   bottle do
     root_url "https://github.com/Kronuz/Xapiand/releases/download/v1.0.0-alpha.2"
-    sha256 arm64_sequoia: "83c5c5b58fbe0e1b8f5e0d8a70a1f46cc92e7da915086bc185ac1594464cde51"
-    sha256 arm64_sonoma:  "4b9c81b893ee1ef96ecbf171a6b08d9dd03c1bd2ff50c950b7708c6a338c2e94"
-    sha256 sonoma:        "e5646d87c7987d4d2b5c6add323c26bf01c4fbbf68081634770fe1d4c7e4935d"
+    sha256 arm64_sequoia: "4b0910283d53555e9c9b958f06cea086462d1f3a1c0c67ac0be3bdf54f5bb5a0"
+    sha256 arm64_sonoma:  "ea62f1e80adbbff3f818cb799fcaf3b4d68a9da828c28432819f60818a06edc0"
+    sha256 sonoma:        "abf9f552593ac9bfce52ca5b3250d6492a59ce1e2a1094ba2d68918f713f57c0"
   end
 
   depends_on "cmake" => :build
@@ -22,11 +36,12 @@ class Xapiand < Formula
   depends_on "zstd"
 
   def install
-    # icu4c is keg-only; point pkg-config (and CMake's ICU probe) at it.
+    # icu4c is keg-only on Homebrew; point pkg-config (and thus CMake's ICU probe)
+    # at it so the build finds ICU.
     ENV.prepend_path "PKG_CONFIG_PATH", Formula["icu4c"].opt_lib/"pkgconfig"
-    # Xapiand fetches its Kronuz-family deps via FetchContent, which Homebrew traps
-    # by default; HOMEBREW_ALLOW_FETCHCONTENT is the sanctioned opt-out. Force C++20 so
-    # older Apple Clang toolchains apply it to the sub-builds too.
+    # This formula fetches its Kronuz-family deps via FetchContent, which Homebrew
+    # traps by default. HOMEBREW_ALLOW_FETCHCONTENT is Homebrew's sanctioned opt-out
+    # (the trap returns early when it's ON). Fine for a personal tap.
     system "cmake", "-S", ".", "-B", "build", "-GNinja",
            "-DCMAKE_BUILD_TYPE=Release",
            "-DCMAKE_CXX_STANDARD=20",
@@ -36,15 +51,11 @@ class Xapiand < Formula
            "-DHOMEBREW_ALLOW_FETCHCONTENT=ON",
            *std_cmake_args
     # LTO is off for the bottle build: its per-TU bitcode makes the heavy TUs
-    # memory-hungry enough to OOM the smaller macOS runners and crawls on Intel.
+    # (search_views.cc) memory-hungry enough to OOM the smaller macOS runners and
+    # crawls on Intel. Bounding parallelism to Homebrew's job count is a further
+    # safety net without changing the produced binaries.
     system "cmake", "--build", "build", "--parallel", ENV.make_jobs.to_s
     system "cmake", "--install", "build"
-  end
-
-  def post_install
-    (var/"db/xapiand").mkpath
-    (var/"log").mkpath
-    (var/"run").mkpath
   end
 
   test do
