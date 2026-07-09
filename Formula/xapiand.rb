@@ -10,6 +10,7 @@ class Xapiand < Formula
     root_url "https://github.com/Kronuz/Xapiand/releases/download/v1.0.0-alpha.2"
     sha256 arm64_sequoia: "036a08ac60ddb01e9ca489209c6dc5dca9a1e8d9dc7da754c31ea7e93183584e"
     sha256 arm64_sonoma:  "c48d502655b18bb454553d722c9686ba28f18b299bd8c253ae1ae378e6a8ff9d"
+    sha256 sonoma:        "2ee84ebcb14cf05e4427500299b3b4507f83c236cf8640cda3949e205c496515"
   end
 
   depends_on "cmake" => :build
