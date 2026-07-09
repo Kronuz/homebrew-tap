@@ -7,9 +7,9 @@ class Xapiand < Formula
   head "https://github.com/Kronuz/Xapiand.git", branch: "master"
 
   bottle do
-    root_url "https://github.com/Kronuz/Xapiand/releases/download/v1.0.0-alpha.1"
-    sha256 arm64_sequoia: "11bcaf77b291ddfa6a22732711e2dc1d98ed187c2ba08af39ee471526fe33917"
-    sha256 arm64_sonoma:  "2cedd16470f456a3a8f4fb443b27ecfa43435c795b5372c7eb6237ce2fda095b"
+    root_url "https://github.com/Kronuz/Xapiand/releases/download/v1.0.0-alpha.2"
+    sha256 arm64_sequoia: "1c80de91b5253bda1a7f709d33847b4ea3104e199eccf4404bbc29d50ea356cd"
+    sha256 arm64_sonoma:  "ece21803b8faeb59d5ea85b64539205a9d2885abad7de8976bbdca78d5c25afa"
   end
 
   depends_on "cmake" => :build
