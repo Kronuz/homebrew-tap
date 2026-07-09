@@ -8,8 +8,8 @@ class Xapiand < Formula
 
   bottle do
     root_url "https://github.com/Kronuz/Xapiand/releases/download/v1.0.0-alpha.2"
-    sha256 arm64_sequoia: "1c80de91b5253bda1a7f709d33847b4ea3104e199eccf4404bbc29d50ea356cd"
-    sha256 arm64_sonoma:  "ece21803b8faeb59d5ea85b64539205a9d2885abad7de8976bbdca78d5c25afa"
+    sha256 arm64_sequoia: "036a08ac60ddb01e9ca489209c6dc5dca9a1e8d9dc7da754c31ea7e93183584e"
+    sha256 arm64_sonoma:  "c48d502655b18bb454553d722c9686ba28f18b299bd8c253ae1ae378e6a8ff9d"
   end
 
   depends_on "cmake" => :build
