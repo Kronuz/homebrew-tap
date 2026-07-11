@@ -17,16 +17,16 @@
 class Xapiand < Formula
   desc "RESTful search engine"
   homepage "https://github.com/Kronuz/Xapiand"
-  url "https://github.com/Kronuz/Xapiand/archive/refs/tags/v1.0.0-alpha.4.tar.gz"
-  sha256 "58e355a2c78aa320da5621e002bd29ea66f39b1dd45eb5cc9db1866dce2f7ac2"
+  url "https://github.com/Kronuz/Xapiand/archive/refs/tags/v1.0.0-alpha.5.tar.gz"
+  sha256 "85b1e960ddd1f9f3dfd863b9a98a8eb9975d66bf7da6849862fe2b2e5778963e"
   license "MIT"
   head "https://github.com/Kronuz/Xapiand.git", branch: "master"
 
   bottle do
-    root_url "https://github.com/Kronuz/Xapiand/releases/download/v1.0.0-alpha.4"
-    sha256 arm64_sequoia: "a66b9b6b6e353ef45c5ff5fa6b12a5531245d9123280b6b0173076a23bf9576a"
-    sha256 arm64_sonoma:  "feffd6ea7f65fbe1f41f082f478b335a62cd7deb2b7cd53e745d3965129aefcf"
-    sha256 sonoma:        "72cf9c00f4ee6ad6645c5349f7f29582b38e0e27e4fd0a79dd81e4ba84cf13a3"
+    root_url "https://github.com/Kronuz/Xapiand/releases/download/v1.0.0-alpha.5"
+    sha256 arm64_sequoia: "80e4834f1ad606eeed54d5433a1e01959171a1dbd245ae074c10a138183b707f"
+    sha256 arm64_sonoma:  "8215d7cead1082b980a4f0f9f011e383d5cc368767e577026f9d18c2332daabe"
+    sha256 sonoma:        "6232ccad6ced66b38125176be382d2dcf26227639013833ad0623fbc8e760ef6"
   end
 
   depends_on "cmake" => :build
