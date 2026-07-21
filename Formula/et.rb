@@ -1,51 +1,63 @@
+# typed: strict
+# frozen_string_literal: true
+
+# Homebrew formula for Eternal Terminal.
 class Et < Formula
   desc "Eternal Terminal fork with etctl, a native machine control plane"
   homepage "https://github.com/Kronuz/EternalTerminal"
   url "https://github.com/Kronuz/EternalTerminal.git",
-      tag:      "et-master-etctl.6",
-      revision: "4a1870a2bfc548abd81e19c976239725a31c191a"
-  version "6.2.11+master.6"
-  head "https://github.com/Kronuz/EternalTerminal.git", branch: "etctl-2-richer-verbs"
+      branch:   "etctl-2-richer-verbs",
+      revision: "a10f0b36f029511834dcf37827f7b7986ddfd0bf"
+  head "https://github.com/Kronuz/EternalTerminal.git",
+      branch:   "etctl-2-richer-verbs"
+  version "7.0.0-etctl.1"
   license "Apache-2.0"
 
   bottle do
-    root_url "https://kronuz.github.io/homebrew-tap"
-    sha256 cellar: :any, arm64_tahoe: "4488efe16955afa8983ad9e0ff296bfe906f1cd6aa1e83a0bdd57dbf23c91a19"
+    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.1"
+    sha256 cellar: :any, arm64_tahoe: "490e0fe39ffe7851f265143e5424b0812aca0b3da993d452be7267762f9022b1"
+    sha256 cellar: :any, tahoe:       "65a3d1e37f777ff40c338e2fa0b17b061e767df53730f62252c22967497449ab"
   end
 
-  depends_on "cmake" => :build
-  depends_on "pkg-config" => :build
   depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "cmake" => :build
   depends_on "libtool" => :build
+  depends_on "pkg-config" => :build
 
+  depends_on "abseil"
   depends_on "curl"
-  depends_on "openssl"
-  depends_on "protobuf"
   depends_on "libsodium"
+  depends_on "openssl@3"
+  depends_on "protobuf"
 
   def install
     ENV["VCPKG_FORCE_SYSTEM_BINARIES"] = "1"
     system "cmake", ".",
            "-DDISABLE_VCPKG:BOOL=ON",
+           "-DDISABLE_SENTRY:BOOL=ON",
            "-DDISABLE_TELEMETRY:BOOL=ON",
+           "-DINSTALL_BASH_COMPLETION:BOOL=OFF",
+           "-DINSTALL_ZSH_COMPLETION:BOOL=OFF",
            "-DPYTHON_EXECUTABLE=/usr/bin/python3",
            *std_cmake_args
     system "make", "install"
-    etc.install "etc/et.cfg" => "et.cfg" unless (etc/"et.cfg").exist?
+    bash_completion.install "scripts/et-completion.bash" => "et"
+    zsh_completion.install "scripts/et-completion.zsh" => "_et"
+    etc.install "etc/et.cfg" => "et.cfg" unless File.exist? "#{etc}et.cfg"
   end
 
   service do
-    run [opt_bin/"etserver", "--cfgfile", etc/"et.cfg"]
+    run ["#{opt_bin}/etserver", "--cfgfile", "#{etc}/et.cfg"]
     keep_alive false
-    working_dir HOMEBREW_PREFIX
-    error_log_path "/tmp/etserver_err"
-    log_path "/tmp/etserver_out"
+    working_dir HOMEBREW_PREFIX.to_s
+    error_log_path "/tmp/etmasterserver_err"
+    log_path "/tmp/etmasterserver_out"
     require_root true
   end
 
   test do
-    system bin/"et", "--help"
+    system "#{bin}/et", "--help"
     assert_path_exists bin/"etctl"
   end
 end
