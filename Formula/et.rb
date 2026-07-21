@@ -35,7 +35,6 @@ class Et < Formula
     ENV["VCPKG_FORCE_SYSTEM_BINARIES"] = "1"
     system "cmake", ".",
            "-DDISABLE_VCPKG:BOOL=ON",
-           "-DDISABLE_SENTRY:BOOL=ON",
            "-DDISABLE_TELEMETRY:BOOL=ON",
            "-DINSTALL_BASH_COMPLETION:BOOL=OFF",
            "-DINSTALL_ZSH_COMPLETION:BOOL=OFF",
