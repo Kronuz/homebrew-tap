@@ -7,16 +7,16 @@ class Et < Formula
   homepage "https://github.com/Kronuz/EternalTerminal"
   url "https://github.com/Kronuz/EternalTerminal.git",
       branch:   "etctl-3-richer-verbs",
-      revision: "219532e98ec9548b2ae69807c620c866103d0572"
+      revision: "3621fd257426ecfd4070c7d10becc78ed716c595"
   head "https://github.com/Kronuz/EternalTerminal.git",
       branch:   "etctl-3-richer-verbs"
-  version "7.0.0-etctl.2"
+  version "7.0.0-etctl.3"
   license "Apache-2.0"
 
   bottle do
-    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.2"
-    sha256 cellar: :any, arm64_tahoe: "c393c9d10df716942bd97cace6a0c101eda4dcf7ad0c04fd07f6adba93b83d76"
-    sha256 cellar: :any, tahoe:       "f0ed7c08267d8b52c17fec30f5b041beb0de467e1faabce1d77ff10250cd16a6"
+    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.3"
+    sha256 cellar: :any, arm64_tahoe: "0bf3666929932709996b1a2309a0e2d7e409cd2153386e47069f1e04704cff48"
+    sha256 cellar: :any, tahoe:       "bf27eb9d1f7154ccc33334b9beb0a9fab32ec5bc248e687ac240d452fde7ac52"
   end
 
   depends_on "autoconf" => :build
