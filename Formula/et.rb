@@ -10,13 +10,13 @@ class Et < Formula
       revision: "3621fd257426ecfd4070c7d10becc78ed716c595"
   head "https://github.com/Kronuz/EternalTerminal.git",
       branch:   "etctl-3-richer-verbs"
-  version "7.0.0-etctl.3"
+  version "7.0.0-etctl.4"
   license "Apache-2.0"
 
   bottle do
-    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.3"
-    sha256 cellar: :any, arm64_tahoe: "0bf3666929932709996b1a2309a0e2d7e409cd2153386e47069f1e04704cff48"
-    sha256 cellar: :any, tahoe:       "bf27eb9d1f7154ccc33334b9beb0a9fab32ec5bc248e687ac240d452fde7ac52"
+    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.4"
+    sha256 cellar: :any, arm64_tahoe: "99ef9e3ab677c1e2ced0f876c8ead53849c145699a1e4fbc639861a1f61cfff3"
+    sha256 cellar: :any, tahoe:       "861875a70a933b26dbef7987f28f222e58789640c6c2f29437759023e39b4044"
   end
 
   depends_on "autoconf" => :build
