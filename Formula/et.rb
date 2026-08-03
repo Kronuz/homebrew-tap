@@ -6,17 +6,17 @@ class Et < Formula
   desc "Eternal Terminal fork with etctl, a native machine control plane"
   homepage "https://github.com/Kronuz/EternalTerminal"
   url "https://github.com/Kronuz/EternalTerminal.git",
-      branch:   "etctl-3-richer-verbs",
-      revision: "3621fd257426ecfd4070c7d10becc78ed716c595"
-  head "https://github.com/Kronuz/EternalTerminal.git",
-      branch:   "etctl-3-richer-verbs"
-  version "7.0.0-etctl.4"
+      branch:   "et-v7.0.0-etctl.5",
+      revision: "e729f0ba289091aef767a440fe1bfdbbea282d5b"
+  version "7.0.0-etctl.5"
   license "Apache-2.0"
+  head "https://github.com/Kronuz/EternalTerminal.git",
+      branch:   "et-v7.0.0-etctl.5"
 
   bottle do
-    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.4"
-    sha256 cellar: :any, arm64_tahoe: "99ef9e3ab677c1e2ced0f876c8ead53849c145699a1e4fbc639861a1f61cfff3"
-    sha256 cellar: :any, tahoe:       "861875a70a933b26dbef7987f28f222e58789640c6c2f29437759023e39b4044"
+    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.5"
+    sha256 cellar: :any, arm64_tahoe: "305630f6666f86eaaf42745ef98d2ddfa3a25ebf4522e63e3afd51799bc25b72"
+    sha256 cellar: :any, tahoe:       "7db2f8aa63be617b7390fcc56edc38508194502084b70fecaa064d042c2b8a13"
   end
 
   depends_on "autoconf" => :build
