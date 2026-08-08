@@ -71,7 +71,7 @@ ibrew bottle Kronuz/tap/et
 
 ```sh
 cd ~/code/homebrew-tap
-release="EternalTerminal-v7.0.0-etctl.5"
+release="EternalTerminal-v7.0.0-etctl.6"
 
 gh release create $release --title $release --notes ""
 
