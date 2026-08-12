@@ -77,7 +77,22 @@ gh release create $release --title $release --notes ""
 
 for file in *--*.bottle.tar.gz; do; mv "$file" "${file/--/-}"; done
 for file in *-*.bottle.tar.gz; do; gh release upload $release $file; done
+
+# The RPM, plus an unversioned alias so the articles can link a URL that
+# never needs bumping:
+#   .../releases/latest/download/et-latest.x86_64.rpm
+# dnf reads the version from the package header, not the file name, so the
+# alias still installs (and upgrades to) the right build.
+gh release upload $release et-*.x86_64.rpm
+cp et-*.x86_64.rpm et-latest.x86_64.rpm
+gh release upload $release et-latest.x86_64.rpm
 ```
+
+Upload the alias on **every** release, since `latest` follows the newest
+release in this repo. That also means the `latest` URL only stays correct while
+EternalTerminal is the only formula released here: cutting a release for
+`xapiand` or `nginx` would take `latest` with it, and the alias would have to be
+attached to that release too (or the ET releases moved to their own repo).
 
 ### Other forulas
 
