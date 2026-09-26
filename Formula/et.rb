@@ -16,6 +16,7 @@ class Et < Formula
   bottle do
     root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.9"
     sha256 cellar: :any, arm64_tahoe: "519b28f34ae96647f45066f08853c9de125445c81adc48c3cdb249b229bd94f5"
+    sha256 cellar: :any, tahoe:       "8b7c80550191f51d6afe283c09f885691af778d07f43750b2c4a8fa98ab40bbb"
   end
 
   depends_on "autoconf" => :build
