@@ -6,16 +6,16 @@ class Et < Formula
   desc "Eternal Terminal fork with etctl, a native machine control plane"
   homepage "https://github.com/Kronuz/EternalTerminal"
   url "https://github.com/Kronuz/EternalTerminal.git",
-      branch:   "et-v7.0.0-etctl.8",
-      revision: "6285459b6a175a6aba2f045ee1f3462217e0339c"
-  version "7.0.0-etctl.8"
+      branch:   "et-v7.0.0-etctl.9",
+      revision: "b34b36f1870b9aa5f17abeed9569547b5781cafd"
+  version "7.0.0-etctl.9"
   license "Apache-2.0"
   head "https://github.com/Kronuz/EternalTerminal.git",
-      branch:   "et-v7.0.0-etctl.8"
+      branch:   "et-v7.0.0-etctl.9"
 
   bottle do
-    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.8"
-    sha256 cellar: :any, arm64_tahoe: "a1791fd75b1ab292017458915f0a811a62fc98b153949f1d9aa2c73c7c425cd1"
+    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.9"
+    sha256 cellar: :any, arm64_tahoe: "519b28f34ae96647f45066f08853c9de125445c81adc48c3cdb249b229bd94f5"
   end
 
   depends_on "autoconf" => :build
