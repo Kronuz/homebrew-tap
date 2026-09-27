@@ -6,17 +6,17 @@ class Et < Formula
   desc "Eternal Terminal fork with etctl, a native machine control plane"
   homepage "https://github.com/Kronuz/EternalTerminal"
   url "https://github.com/Kronuz/EternalTerminal.git",
-      branch:   "et-v7.0.0-etctl.9",
-      revision: "b34b36f1870b9aa5f17abeed9569547b5781cafd"
-  version "7.0.0-etctl.9"
+      branch:   "et-v7.0.0-etctl.10",
+      revision: "32ca481eecb3ef75b0a54b98f6139d55a4ead499"
+  version "7.0.0-etctl.10"
   license "Apache-2.0"
   head "https://github.com/Kronuz/EternalTerminal.git",
-      branch:   "et-v7.0.0-etctl.9"
+      branch:   "et-v7.0.0-etctl.10"
 
   bottle do
-    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.9"
-    sha256 cellar: :any, arm64_tahoe: "519b28f34ae96647f45066f08853c9de125445c81adc48c3cdb249b229bd94f5"
-    sha256 cellar: :any, tahoe:       "8b7c80550191f51d6afe283c09f885691af778d07f43750b2c4a8fa98ab40bbb"
+    root_url "https://github.com/Kronuz/homebrew-tap/releases/download/EternalTerminal-v7.0.0-etctl.10"
+    sha256 cellar: :any, arm64_tahoe: "2af8b50a9430e1fdb496cc83d946f7236743adf1ce6ed7fa596538059c7b0810"
+    sha256 cellar: :any, tahoe:       "fe0d0ac75118e33f95855da63c43011f36cb22ddca9b780ccfb0fc965070cba1"
   end
 
   depends_on "autoconf" => :build
