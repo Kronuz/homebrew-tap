@@ -11,6 +11,16 @@ sessions from scripts and agents (a fork of Eternal Terminal, telemetry off).
 Just `brew install Kronuz/tap/et`.
 
 
+### Detent
+
+Runtime knobs: feature flags, kill switches and live settings. Installs the
+`detentd` distributor, the `detent-agent` host agent and the `detent` reader.
+
+Just `brew install Kronuz/tap/detent`.
+
+The [project's page](https://kronuz.github.io/Detent/) goes into detail about it.
+
+
 ### Xapiand
 
 This formula makes it easy to install `xapiand` on any modern OS X system.
